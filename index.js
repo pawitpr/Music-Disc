@@ -6,7 +6,7 @@ const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js'
 const { Player } = require('discord-player');
 const express = require('express');
 require('console-stamp')(console, { format: ':date(yyyy/mm/dd HH:MM:ss)' });
-app.use(require('express-status-monitor')());
+
 
 dotenv.config()
 const ENV = process.env;
@@ -135,7 +135,7 @@ const loadFramework = () => {
     return new Promise((resolve, reject) => {
         const app = express();
         const port = client.config.port || 33333;
-
+        app.use(require('express-status-monitor')());
         app.listen(port, function () {
             console.log(`Server start listening port on ${port}`);
         })
